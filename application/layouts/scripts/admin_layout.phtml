@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Admin</title>
+<base href="<?php echo PUBLIC_DIR;?>admin/"  />
+<link href="css/admin.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.6.min.js"></script>
+<link rel="stylesheet" href="ui/css/start/jquery-ui-1.8.13.custom.css">
+<script type="text/javascript" src="ui/js/jquery-ui-1.8.13.custom.min.js"></script>
+<script type="text/javascript" src="js/fancybox/jquery.fancybox-1.3.4.pack.js"></script>
+<link rel="stylesheet" href="js/fancybox/jquery.fancybox-1.3.4.css" type="text/css" media="screen" />
+</head>
+<body>
+<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <?php echo $this->render("include/header.phtml");?>
+  <tr>
+    <td align="right" class="paddRtLt70" valign="top"><table width="99%" border="0" cellspacing="0" cellpadding="0">
+        <td width="200" align="left" valign="top"><?php echo $this->render("include/left.phtml");?></td>
+          <td align="left" valign="top"><?php echo $this->layout()->content;?></td>
+        </tr>
+      </table></td>
+  </tr>
+  <?php echo $this->render("include/footer.phtml");?>
+</table>
+</body>
+</html>

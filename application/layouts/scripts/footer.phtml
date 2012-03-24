@@ -1,0 +1,39 @@
+<div id="fotter">
+  <div class="fotterinner">
+    <div class="foterlinks">
+      <p class="lnks">
+        <a href="<?php echo $this->baseUrl();?>"><?php echo $this->translate("Home");?></a> | 
+        <a href="<?php echo $this->baseUrl();?>/info/aboutus"><?php echo $this->translate("About Us");?></a> | 
+        <a href="<?php echo $this->baseUrl();?>/project/"><?php echo $this->translate("Browse Projects");?></a> | 
+        <a href="<?php echo $this->baseUrl();?>/project"><?php echo $this->translate("Find Projects");?></a> | 
+        <a href="javascript:;"><?php echo $this->translate("Top Rated Users");?></a> | 
+        <a href="<?php echo $this->baseUrl();?>/project/postproject"><?php echo $this->translate("Post Project");?></a> | 
+        <a href="<?php echo $this->baseUrl();?>/news"><?php echo $this->translate("News");?></a>
+      </p>
+      <p  class="lnks">
+        <a href="<?php echo $this->baseUrl();?>/info/privacypolicy"><?php echo $this->translate("Privacy Policy");?></a> | 
+        <a href="<?php echo $this->baseUrl();?>/info/terms"><?php echo $this->translate("Terms");?></a> | 
+        <a href="<?php echo $this->baseUrl();?>/info/affiliates"><?php echo $this->translate("Affliates");?></a> | 
+        <a href="<?php echo $this->baseUrl();?>/info/contactus"><?php echo $this->translate("Contact");?></a> | 
+        <a href="<?php echo $this->baseUrl();?>/faq">FAQ</a>
+      </p>
+      <p class="copyright"><?php echo $this->translate("&copy; 2011 suchedesigner, Inc.  All Rights Reserved");?></p>
+      <p class="copyright"><?php echo $this->translate("By using this site you agree to the suchedesigner - Terms &amp; Conditions and Privacy Policy.");?></p>
+    </div>
+    <div class="foter-rt">
+      <div class="foterlogo"></div>
+      <div class="followus"> 
+      <?php 
+	  if($this->user_session->config['twitter_link']!=""){?>
+      <a href="<?php echo $this->user_session->config['twitter_link'];?>" class="social-icon" target="_blank">
+      <img src="images/twittericon.gif" title="follow us on twitter" border="0" /></a> 
+      <?php }?>
+      <?php if($this->user_session->config['facebook_link']!=""){?>
+      <a href="<?php echo $this->user_session->config['facebook_link'];?>" class="social-icon" target="_blank">
+      <img src="images/facebookicon.gif" title="follow us on facebook" border="0" />
+      </a>
+      <?php }?>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,50 @@
+<div  id="moonmenu">
+<ul class="profile-navigation">
+    <li><a href="<?php echo $this->baseUrl()?>/users/index" rel="dashboard_e" <?php if($controller == 'index') echo 'class="current"';?>><?php echo $this->translate("Dashboard");?></a></li>
+    <li><a href="<?php echo $this->baseUrl()?>/users/profile" rel="profile_e" <?php if($controller == 'profile') echo 'class="current"';?>><?php echo $this->translate("Profile");?></a>
+    </li>
+    <li><a href="<?php echo $this->baseUrl()?>/payment" rel="payments_e" <?php if($module == 'payment') echo 'class="current"';?>><?php echo $this->translate("Payments");?></a></li>
+    <li><a href="<?php echo $this->baseUrl()?>/dispute/index" rel="dispute_e" <?php if($module == 'dispute') echo 'class="current"';?>><?php echo $this->translate("Disputes");?></a></li>
+    <li><a href="<?php echo $this->baseUrl()?>/users/invitefriends" <?php if($controller == 'invitefriends') echo 'class="current"';?>><?php echo $this->translate("Invite Friends");?></a></li>
+    <li><a href="<?php echo $this->baseUrl()?>/users/support" <?php if($controller == 'support') echo 'class="current"';?>><?php echo $this->translate("Support");?></a></li>
+</ul> 
+</div>
+
+<div id="dashboard_e" class="dropmenudiv_e">
+    <a href="<?php echo $this->baseUrl()?>/users"><?php echo $this->translate("My Projects");?></a>
+    <a href="<?php echo $this->baseUrl()?>/users/messages"><?php echo $this->translate("My Messages");?></a>
+    <a href="<?php echo $this->baseUrl()?>/news"><?php echo $this->translate("Site News");?></a>
+    <a href="<?php echo $this->baseUrl()?>/users/search"><?php echo $this->translate("Search Freelancers");?></a>
+</div>
+
+    <div id="profile_e" class="dropmenudiv_e">
+    <a href="<?php echo $this->baseUrl()?>/users/profile"><?php echo $this->translate("My Profile Details");?></a>
+    <a href="<?php echo $this->baseUrl()?>/users/profile/changepasswordemail/"><?php echo $this->translate("My Email / Password");?></a>
+    <a href="<?php echo $this->baseUrl()?>/users/profile/myqualifications"><?php echo $this->translate("My Qualifications");?></a>
+    <a href="<?php echo $this->baseUrl()?>/users/profile/mycredentials"><?php echo $this->translate("My Credentials");?></a>
+    <a href="<?php echo $this->baseUrl()?>/users/profile/externalprofile"><?php echo $this->translate("View External Profile");?></a>
+    <a href="<?php echo $this->baseUrl()?>/users/profile/mysettings"><?php echo $this->translate("My Settings");?></a>
+    <a href="<?php echo $this->baseUrl()?>/users/upgradetogold"><?php echo $this->translate("Upgrade to Gold");?></a>
+</div>
+
+<div id="payments_e" class="dropmenudiv_e">
+	<a href="<?php echo $this->baseUrl()?>/payment/deposit"><?php echo $this->translate("Deposit Funds");?></a>
+  <a href="<?php echo $this->baseUrl()?>/payment/newescrow"><?php echo $this->translate("New Milestone Payment");?></a>
+  <a href="<?php echo $this->baseUrl()?>/payment/manage"><?php echo $this->translate("Manage Milestones");?></a>
+  <a href="<?php echo $this->baseUrl()?>/payment/transfer"><?php echo $this->translate("Transfer Funds");?></a>
+  <a href="<?php echo $this->baseUrl()?>/payment/withdraw"><?php echo $this->translate("Withdraw Funds");?></a>
+  <a href="<?php echo $this->baseUrl()?>/payment/manage"><?php echo $this->translate("View Payments");?></a>
+  <a href="<?php echo $this->baseUrl()?>/payment/transactions"><?php echo $this->translate("Transaction History");?></a>
+</div>    
+<div id="dispute_e" class="dropmenudiv_e">
+	<a href="<?php echo $this->baseUrl()?>/dispute/newdispute"><?php echo $this->translate("New Dispute");?></a>
+  <a href="<?php echo $this->baseUrl()?>/dispute/disputelist"><?php echo $this->translate("My Disputes");?></a>
+</div>
+ 
+<script type="text/javascript" src="js/dropdowntabs.js"></script>
+<link rel="stylesheet" type="text/css" href="css/halfmoontabs.css" />
+<script type="text/javascript">
+	//SYNTAX: tabdropdown.init("menu_id", [integer OR "auto"])
+	tabdropdown.init("moonmenu", "auto");
+</script>
+<div class="clear">&nbsp;</div>

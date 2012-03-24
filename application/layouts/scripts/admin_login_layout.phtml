@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Admin</title>
+<base href="<?php echo PUBLIC_DIR;?>admin/"  />
+<link href="css/admin.css" rel="stylesheet" type="text/css" />
+<script type="text/javascript" src="js/jquery-1.6.min.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	$("#username").focus();
+});
+</script>
+</head>
+<body>
+<table width="100%" height="100%" border="0" cellpadding="0" cellspacing="0">
+  <?php echo $this->render("include/header.phtml");?>
+  <tr>
+    <td align="center" class="paddRtLt70" valign="top"><table width="590" border="0" cellspacing="0" cellpadding="0">
+      <tr>
+        <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td width="14" align="left" valign="top"><img src="images/boxlt.gif" width="14" height="80" /></td>
+            <td align="left" class="boxbg paddTopBot20" valign="top"><table width="100%" border="0" cellspacing="0" cellpadding="0">
+              <tr>
+                <td width="32" align="left" valign="top"><img src="images/arrow1.gif" width="23" height="23" hspace="5" /></td>
+                <td align="left" valign="top"><span class="text18">Welcome To Suchadesigner Admin Panel </span><br />
+                  Please enter a valid username and password to gain access to the administration console.</td>
+              </tr>
+            </table></td><td width="14" align="left" valign="top"><img src="images/boxrt.gif" width="14" height="80" /></td>
+          </tr>
+        </table></td>
+      </tr>
+      <tr>
+        <td><table width="100%" border="0" cellspacing="0" cellpadding="0">
+          <tr>
+            <td align="left" class="loginLt" valign="middle"><?php echo $this->layout()->content;?>
+            </td>
+            <td width="255" align="right" valign="top"><img src="images/loginrt.gif" width="255" height="275" /></td>
+          </tr>
+        </table></td>
+      </tr>
+    </table></td>
+  </tr>
+    <?php echo $this->render("include/footer.phtml");?>
+</table>
+</body>
+</html>

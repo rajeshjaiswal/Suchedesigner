@@ -1,0 +1,82 @@
+<div id="header">
+    <div class="logo"> <a href="<?php echo $this->baseUrl();?>"><img src="images/logo_de.gif" title="suchedesigner.de" border="0" /></a> </div>
+    <div class="rt-box">
+    <?php 
+		if($this->user_session->loggedIn == true)
+		{
+			?>
+    <div class="statusbox">
+    <pre><?php #print_r($this->user_session->userdata); ?></pre>
+	  	<a href="javascript:;"><?php echo $this->translate("Balance");?><span> <?php echo $this->user_session->userdata['user_currency_symbol'].' '.CurrencyFormat($this->user_session->userdata['user_balance']).' '.$this->user_session->userdata['user_currency_text'];?> </span></a><a href="<?php echo $this->baseUrl();?>/users/messages"><?php echo $this->translate("Inbox");?> <span id="msg_count"> 0 </span><img id="msg_img" src="images/mail.png" border="0" align="absmiddle" style="margin-bottom:2px;" /></a> <a href="<?php echo $this->baseUrl();?>/users/index"><?php echo $this->translate("Welcome");?>, <span>  <?php echo $this->user_session->userdata['user_name']?>   </span></a><a href="<?php echo $this->baseUrl();?>/users/login/logout" style="color:#3ca9e1; text-decoration:underline;">Logout</a>
+	  </div>
+    <?php 
+		}
+		?>
+      <div class="dropdown"><span class="flag"><img src="images/germanflag.gif" title="german language" /></span><span class="dropbtn"><img src="images/dropdownicon.gif" title="dropdown button" /></span></div>
+      <?php 
+			if($this->user_session->loggedIn != true)
+			{
+			?>
+      <div class="topoptions"> <a href="<?php echo $this->baseUrl();?>/users/login" class="common-btn"><span><?php echo $this->translate("Login");?></span></a>
+        <div class="lnk">| <a href="<?php echo $this->baseUrl();?>/users/register"><?php echo $this->translate("Register");?></a></div>
+      </div>
+      <?php 
+			} 
+			$module = Zend_Controller_Front::getInstance()->getRequest()->getModuleName();
+			$controller = Zend_Controller_Front::getInstance()->getRequest()->getControllerName();
+	  ?>
+      <div class="navigationbox">
+        <ul>
+          <li><a href="<?php echo $this->baseUrl();?>" class="<?php if($module=='default' && $controller=='index') { echo "homeon"; } else { echo "home";}?>">Home</a></li>
+          <li><a href="<?php echo $this->baseUrl();?>/project/" class="<?php if($module=='project' && $controller=='index') { echo "tabon"; }?>"><?php echo $this->translate("Browse Projects");?></a></li>
+          <!--<li><a href="javascript:;">Browse Users</a></li>-->
+          <li><a href="<?php echo $this->baseUrl();?>/project/postproject" class="<?php if($module=='project' && $controller=='postproject') { echo "tabon"; }?>"><?php echo $this->translate("Post Project");?></a></li>
+          <li><a href="<?php echo $this->baseUrl();?>/news" class="<?php if($module=='default' && $controller=='news') { echo "tabon"; }?>"><?php echo $this->translate("News");?></a></li>
+          <li><a href="<?php echo $this->baseUrl();?>/info/contactus" class="<?php if($module=='default' && $controller=='info') { echo "tabon"; }?>"><?php echo $this->translate("Contact");?></a></li>
+          <li><a href="<?php echo $this->baseUrl();?>/faq" class="<?php if($module=='default' && $controller=='faq') { echo "tabon"; }?>">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+<script type="text/javascript">
+function runUpdateMsgCount(){
+	updateMsgCount();
+	setTimeout('updateMsgCount()',600*1000);
+}
+function updateMsgCount()
+{
+	var userId = '<?php echo $this->user_session->userdata['user_id']; ?>';
+	if(userId == ""){
+		return;
+	}
+
+	$.ajax({
+		type:		"POST",
+		url:		"<?php echo $this->baseUrl()?>/users/index/getmessagecount",	
+		cache:		false, 
+		data:		{user_id:userId},	
+		beforeSend: function() {},
+		success: 	updateEnvelope,
+		complete: 	function() {}
+	});
+}
+ 
+ function updateEnvelope(argText){
+		var inbox_counter = $('#msg_count');
+		var cnt = parseInt(argText); 
+		if(isNaN(cnt)){
+			return;
+		}
+		inbox_counter.html(cnt+' ');
+		var imgdom = $('#msg_img');
+		if(cnt == 0){
+			imgdom.attr('src','images/mail.png');
+			return;
+		}
+		imgdom.attr('src','images/mail_yellow.png');
+}
+
+$(document).ready(function () {
+	runUpdateMsgCount()
+});
+</script> 

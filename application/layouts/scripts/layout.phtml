@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<title>Suchedesigner.de</title>
+<base href="<?php echo PUBLIC_DIR;?>"  />
+
+<link rel="stylesheet" href="css/master-style.css" type="text/css" />
+<script src="js/jquery-1.6.min.js" type="text/javascript"></script>
+<script src="js/jquery.metadata.js" type="text/javascript"></script>
+<script src="js/jquery.validate.js" type="text/javascript"></script>
+<link rel="stylesheet" href="js/ui/css/ui-lightness/jquery-ui-1.8.13.custom.css" type="text/css" />
+<script src="js/ui/js/jquery-ui-1.8.13.custom.min.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(document).ready(function(){
+	var ht = parseInt($(window).height() - 263);
+	$("#maincontent-box").css("min-height",ht+"px");
+	$(window).bind('resize', function() {
+    	var ht = parseInt($(window).height() - 263);
+		$("#maincontent-box").css("min-height",ht+"px");
+	});
+});
+</script>
+<style type="text/css">
+<!--
+.style3 {
+	color: #FFFFFF;
+	font-size: 15px;
+}
+-->
+</style>
+
+</head>
+<body>
+<div id="main-container">
+<?php
+$controller = Zend_Controller_Front::getInstance()->getRequest()->getControllerName();
+$module = Zend_Controller_Front::getInstance()->getRequest()->getModuleName();
+  //echo $module.'-----'.$controller;
+  echo $this->render("header.phtml");
+  if($module == 'default' && $controller == 'index')
+  {
+	echo $this->render("banner.phtml");
+  }
+  ?>
+  <div id="maincontent-box">
+  <?php 
+	if($this->user_session->loggedIn == true)
+	{
+		echo $this->render("profile_nav.phtml");
+	}	
+  	echo $this->layout()->content;
+	?>
+  </div>
+</div>
+<div class="clear"></div>
+	<?php echo $this->render("footer.phtml");?>
+</body>
+</html>
